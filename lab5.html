@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Tree Order Form</title>
+
+  <style>
+      
+      input, select {
+          width: 100%;
+          padding: 5px;
+          margin: 5px 5px 5px 0px;
+          box-sizing: border-box;
+      }
+
+      input.error, select.error {
+        border: 2px red solid;
+      }
+
+  </style>
+
+</head>
+<body>
+
+    <h1>Minnesota Tree Order Form</h1>
+
+    <p>Enter information to order your tree. All fields are required.</p>
+
+    <h2>Order Information</h2>
+
+    <label for="homeowner-name">Homeowner Name</label><input id="homeowner-name" name="homeowner-name">
+    <br>
+    <label for="homeowner-house-number">House Number</label><input id="homeowner-house-number" name="homeowner-house-number">
+    <br>
+    <label for="homeowner-street-name">Street Name</label><input id="homeowner-street-name" name="homeowner-street-name">
+    <br>
+    <label for="city">City</label><input id="city" name="city"> 
+    <br>
+    <!-- All orders must be for Minnesota, so this input is not editable -->
+    <label for="state">State</label><input id="state" name="state" value="Minnesota" disabled> 
+    <br>
+    <label for="zipcode">Zip Code</label><input id="zipcode" name="zipcode">
+    <br>
+
+    <label for="tree-type">Tree Type</label>
+    <select id="tree-type">
+        <!-- Unselectable message shown. Since this will be required, it forces the user to actually pick a tree, not just click submit for the default first option -->
+        <option disabled selected value=""> Select a tree </option>  
+        <!-- The options that the user will be allowed to select, or choose from -->
+        <option name="tree-type">Cedar</option>
+        <option name="tree-type">Maple</option>
+        <option name="tree-type">Oak</option>
+    </select>
+    <br>
+
+    <button id="submit-order">Submit Order</button>    
+
+    <h2>Order Summary</h2>
+
+    <p id="order-summary">
+        <!-- TODO Use JavaScript to display the order information, 
+            only if all the required information is entered  -->
+    </p>
+    
+
+
+<script>
+
+   let submitButton = document.querySelector('#submit-order');
+let orderSummaryParagraph = document.querySelector('#order-summary');
+
+submitButton.addEventListener('click', function() {
+    // Get values from input fields
+    let name = homeownerNameInput.value;
+    let houseNumber = homeownerHouseNumberInput.value;
+    let streetName = homeownerStreetNameInput.value;
+    let city = cityInput.value;
+    let state = document.querySelector('#state').value; // Minnesota
+    let zipCode = zipCodeInput.value;
+    let selectedTree = treeTypeSelect.options[treeTypeSelect.selectedIndex].text;
+
+     // Validate the form inputs
+     let validationResult = validateForm(name, houseNumber, streetName, city, zipCode);
+
+if (validationResult.isValid) {
+    // Display confirmation message if form is valid
+    displayConfirmation(name, houseNumber, streetName, city, state, zipCode, selectedTree);
+} else {
+    // Display error messages if form is invalid
+    orderSummaryParagraph.innerHTML = `<strong>Error(s) occurred:</strong><br>${validationResult.errorMessages.join('<br>')}`;
+}
+});
+    
+    
+// Function to validate the form inputs
+function validateForm(name, houseNumber, streetName, city, zipCode) {
+    let errorMessages = []; 
+    if (!name) {
+        errorMessages.push('Homeowner name is required.');
+    }
+
+    if (!houseNumber) {
+        errorMessages.push('House number is required.');
+    }
+
+    if (!streetName) {
+        errorMessages.push('Street name is required.');
+    }
+
+    if (!city) {
+        errorMessages.push('City is required.');
+    }
+
+    if (!zipCode || isNaN(zipCode) || zipCode.length !== 5) {
+        errorMessages.push('Zip code is required and must be a 5-digit number.');
+    }
+ }
+// Additional validation logic can be added if needed
+
+    return {
+        isValid: errorMessages.length === 0,
+        errorMessages: errorMessages
+    };
+    
+
+// Function to display confirmation message
+function displayConfirmation(name, houseNumber, streetName, city, state, zipCode, selectedTree) {
+    let orderSummary = `
+        <strong>Order Summary:</strong><br>
+        <strong>Homeowner:</strong> ${name}<br>
+        <strong>Address:</strong> ${houseNumber} ${streetName}, ${city}, ${state} ${zipCode}<br>
+        <strong>Tree Type:</strong> ${selectedTree}
+    `;
+    orderSummaryParagraph.innerHTML = orderSummary;
+}
+
+   
+
+
+
+</script>
+
+</body>
+</html>
+
