@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Feedback Form</title>
+    <!-- Link Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <!-- Link Open Sans font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap">
+    <!-- Link your custom styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title">Student Feedback Form</h2>
+                        <form>
+                            <div class="mb-3">
+                                <label for="studentName" class="form-label">Student Name</label>
+                                <input type="text" class="form-control" id="studentName" placeholder="Enter your name">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" placeholder="Enter the email">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="comments" class="form-label">Comments</label>
+                                <textarea class="form-control" id="comments" rows="4" placeholder="Enter your comments"></textarea>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Are you a current student?</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="currentStudent" id="yes">
+                                    <label class="form-check-label" for="yes">Yes</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="currentStudent" id="no">
+                                    <label class="form-check-label" for="no">No</label>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Submit comments</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <!-- Other content for the second column can be added here -->
+
+                <script>
+                    // JavaScript code starts here
+
+                    // Example array to demonstrate push()
+                    let myArray = [1, 2, 3];
+
+                    // Using push() to add elements to the array
+                    myArray.push(4, 5);
+
+                    // Output the array
+                    console.log('Array after push:', myArray);
+
+                    // Example array to demonstrate join()
+                    let joinArray = ['1', '2', '3', '4', '5'];
+
+                    // Using join() to concatenate array elements into a string
+                    let joinedString = joinArray.join('-');
+
+                    // Output the joined string
+                    console.log('Joined string:', joinedString);
+
+                    // Example array to demonstrate length property
+                    let lengthArray = ['apple', 'banana', 'orange', 'grape'];
+
+                    // Using length property to check the size of the array
+                    let arrayLength = lengthArray.length;
+
+                    // Output the array length
+                    console.log('Array length:', arrayLength);
+
+                    // JavaScript code ends here
+                </script>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Optional: Add Bootstrap JS for certain features (if needed) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
